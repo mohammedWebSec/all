@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ $1 ]]; then
+curl -s https://crt.sh/?Identity=%.$1 | grep ">*.$1" | sed 's/<[/]*[TB][DR]>/\n/g' | grep -vE "<|^[\*]*[\.]*$1" | sort -u | awk 'NF'
+
+
+else
+    echo 'specify arguments'
+    fi
